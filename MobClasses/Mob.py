@@ -14,7 +14,7 @@ def colorLerp(b,t):
     ]
     return newColor
 
-
+lastHit = pygame.time.get_ticks()
 
 class Mob(Rectangle):
     def __init__(self,mobChar):
@@ -39,3 +39,17 @@ class Mob(Rectangle):
     def Take_Damage(self,damage):
         self.health-=damage
         self.color=colorLerp([255,0,0],1-self.health/100)
+
+    def collisionDetect(object): #object should be a Rectangle object
+        global lastHit
+        currentHit = pygame.time.get_ticks()
+        if currentHit - lastHit < 250:
+            return
+        if self.obj.colliderect(object):
+            # print("the player has been damaged!")
+            # lastHit=currentHit
+            # player1.Take_Damage(10)
+            print(str(self.obj)+" has collided with "+str(object))
+            return True
+        else:
+            return False

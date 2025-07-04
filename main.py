@@ -31,17 +31,17 @@ enemyPos = {"x":250,"y":50}
 
 #===========================================================
 
-# [collission callback]
-lastHit = pygame.time.get_ticks()
-def collisionDetect(object): #object should be a Rectangle object
-    global lastHit
-    currentHit = pygame.time.get_ticks()
-    if currentHit - lastHit < 250:
-        return
-    if player1.obj.colliderect(object):
-        print("the player has been damaged!")
-        lastHit=currentHit
-        player1.Take_Damage(10)
+# # [collission callback]
+# lastHit = pygame.time.get_ticks()
+# def collisionDetect(object): #object should be a Rectangle object
+#     global lastHit
+#     currentHit = pygame.time.get_ticks()
+#     if currentHit - lastHit < 250:
+#         return
+#     if player1.obj.colliderect(object):
+#         print("the player has been damaged!")
+#         lastHit=currentHit
+#         player1.Take_Damage(10)
 
 def reward():
     player1.health=100
@@ -81,7 +81,8 @@ def player_update():
 def enemy_update():
     for enemy in enemylist:
         enemy.Move(random.randint(-round(game_time/1200),round(game_time/1200)),random.randint(-round(game_time/1200),round(game_time/1200)))
-        collisionDetect(enemy.obj)
+        # if player.collisionDetect(enemy.obj):
+        #     //player.takeDamagE(stuff)
         #wanted: if player1.collissionDetect(enemy.obj):
         #TODO: refactor collisionDetect to be a method of the Mob class
 
